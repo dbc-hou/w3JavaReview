@@ -5,6 +5,7 @@ import java.time.*;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.HashMap;
+import java.util.HashSet;
 
 public class Main {
     int x = 5;
@@ -15,6 +16,7 @@ public class Main {
     static ArrayList<String> cars = new ArrayList<String>();
     static LinkedList<String> dogs = new LinkedList<String>();
     static HashMap<String, String> capitalCities = new HashMap<String, String>();
+    static HashSet<String> uniqueThings = new HashSet<String>();
 
     enum Level {
         LOW,
@@ -23,7 +25,7 @@ public class Main {
     }
 
     public static void main(String[] args) {
-        testHashMap();
+        testHashSet();
     }
 
     static void mainSecondMethod() {
@@ -138,6 +140,19 @@ public class Main {
                 System.out.println("Thank you for playing! Goodbye.");
                 break;
             }
+        }
+    }
+
+    public static void testHashSet() {
+        uniqueThings.add("Grand Canyon");
+        uniqueThings.add("Hanging Gardens");
+        uniqueThings.add("Great Wall of China");
+        uniqueThings.add("Orange Show");
+        if (!(uniqueThings.contains("Kayleen's Brownies"))) {
+            uniqueThings.add("Kayleen's Brownies");
+        }
+        for (String k : uniqueThings) {
+            System.out.println(k);
         }
     }
 }
