@@ -7,10 +7,11 @@ import java.util.LinkedList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class Main {
+public class Main extends Thread {
     int x = 5;
     final int y = 3;
     String fname = "David";
@@ -28,7 +29,8 @@ public class Main {
     }
 
     public static void main(String[] args) {
-        testRegex();
+        String x = reverseString("David Bruce Collins");
+        System.out.println(x);
     }
 
     static void mainSecondMethod() {
@@ -199,5 +201,39 @@ public class Main {
         } else {
             System.out.println("Match not found.");
         }
+    }
+
+    public void run() {
+        System.out.println("This code is running in a thread.");
+    }
+
+    public static void walk() {
+        Main thread = new Main();
+        thread.start();
+        System.out.println("This code is outside of a thread.");
+    }
+
+    public static void testLambda() {
+        AtomicInteger start = new AtomicInteger();
+        ArrayList<Integer> numbers = new ArrayList<Integer>();
+        numbers.add(5);
+        numbers.add(9);
+        numbers.add(8);
+        numbers.add(1);
+        numbers.forEach((n) -> {
+            start.addAndGet(n);
+            System.out.println(start.get());
+        });
+    }
+
+    public static String reverseString(String originalString) {
+        String rString = "";
+        System.out.println("Original string: " + originalString);
+
+        for (int i = 0; i < originalString.length(); i++) {
+            rString = originalString.charAt(i) + rString;
+        }
+
+        return "Reversed string: " + rString;
     }
 }
