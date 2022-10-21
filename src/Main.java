@@ -7,6 +7,8 @@ import java.util.LinkedList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Main {
     int x = 5;
@@ -26,7 +28,7 @@ public class Main {
     }
 
     public static void main(String[] args) {
-        testHashMap();
+        testRegex();
     }
 
     static void mainSecondMethod() {
@@ -157,6 +159,45 @@ public class Main {
         Iterator<String> it = uniqueThings.iterator();
         while (it.hasNext()) {
             System.out.println(it.next());
+        }
+    }
+
+    public static void testWrappers() {
+        Integer myInt = 5;
+        Double myDouble = 5.99;
+        Character myChar = 'A';
+        System.out.println("My integer is " + myInt.intValue() + ", my double is " + myDouble.doubleValue() + ", and my favorite character is " + myChar.charValue() + ".");
+    }
+
+    public static void testExceptions1() {
+        try {
+            int[] myNumbers = {1,2,3};
+            System.out.println(myNumbers[10]);
+        }
+        catch (Exception e) {
+            System.out.println("Oops, we got us an error here: " + e.getStackTrace());
+        }
+        finally {
+            System.out.println("The exception was handled.");
+        }
+    }
+
+    public static void testExceptions2(int age) {
+        if (age < 18) {
+            throw new ArithmeticException("Access denied - You must be at least 18 Earth years old!");
+        } else {
+            System.out.println("Access granted. Welcome aboard.");
+        }
+    }
+
+    public static void testRegex() {
+        Pattern p = Pattern.compile("sch+", Pattern.CASE_INSENSITIVE);
+        Matcher m = p.matcher("Visit WSchools!");
+        boolean matchFound = m.find();
+        if (matchFound) {
+            System.out.println("Match found (case-insensitive)");
+        } else {
+            System.out.println("Match not found.");
         }
     }
 }
