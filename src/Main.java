@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Iterator;
 
 public class Main {
     int x = 5;
@@ -25,7 +26,7 @@ public class Main {
     }
 
     public static void main(String[] args) {
-        testHashSet();
+        testHashMap();
     }
 
     static void mainSecondMethod() {
@@ -131,6 +132,7 @@ public class Main {
                 if (yesNo1.equalsIgnoreCase("N")) {
                     break;
                 } else if (yesNo1.equalsIgnoreCase("Y")) {
+                    capitalAnswer = "";
                     System.out.println(qPrompt);
                 }
             }
@@ -138,6 +140,7 @@ public class Main {
             String yesNo2 = sc.nextLine();
             if (yesNo2.equalsIgnoreCase("N")) {
                 System.out.println("Thank you for playing! Goodbye.");
+                sc.close();
                 break;
             }
         }
@@ -151,8 +154,9 @@ public class Main {
         if (!(uniqueThings.contains("Kayleen's Brownies"))) {
             uniqueThings.add("Kayleen's Brownies");
         }
-        for (String k : uniqueThings) {
-            System.out.println(k);
+        Iterator<String> it = uniqueThings.iterator();
+        while (it.hasNext()) {
+            System.out.println(it.next());
         }
     }
 }
